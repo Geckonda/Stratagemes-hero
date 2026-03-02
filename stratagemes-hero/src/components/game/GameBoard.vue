@@ -24,7 +24,7 @@
         <div class="final-score">
           <p>Твой счет: {{ gameStore.score }}</p>
           <p>Ошибок: {{ gameStore.mistakes }}</p>
-          <p>Максимальное комбо: {{ gameStore.combo }}</p>
+          <p>Максимальное комбо: {{ gameStore.maxCombo }}</p>
         </div>
         <button @click="returnToMenu" class="menu-button">
           В главное меню

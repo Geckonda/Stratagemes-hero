@@ -11,7 +11,8 @@ export const useGameStore = defineStore('game', {
     maxTime: 10,
     combo: 0,
     wrongInput: false,
-    timerInterval: null
+    timerInterval: null,
+    maxCombo: 0
   }),
   
   getters: {
@@ -87,6 +88,8 @@ export const useGameStore = defineStore('game', {
       
       if (this.playerInput.length === this.currentStratagem.code.length) {
         this.combo++
+        if(this.combo > this.maxCombo)
+            this.maxCombo = this.combo;
         this.score += 100 * this.combo
         this.addTime(1)
         this.gameStatus = 'success'
@@ -98,6 +101,7 @@ export const useGameStore = defineStore('game', {
       this.playerInput = []
       this.mistakes = 0
       this.combo = 0
+      this.maxCombo = 0
       this.gameStatus = 'idle'
       this.timeLeft = this.maxTime
       this.wrongInput = false
