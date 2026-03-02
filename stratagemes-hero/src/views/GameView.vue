@@ -10,6 +10,11 @@
         :mistakes="gameStore.mistakes"
         :combo="gameStore.combo"
       />
+      <div class="sound-control">
+        <button @click="toggleSound" class="sound-button">
+          {{ soundEnabled ? '🔊' : '🔇' }}
+        </button>
+      </div>
     </template>
     
     <template #main>
@@ -42,9 +47,12 @@ import GameLayout from '@/components/layout/GameLayout.vue'
 import GameBoard from '@/components/game/GameBoard.vue'
 import StratagemList from '@/components/ui/StratagemList.vue'
 import ScoreBoard from '@/components/ui/ScoreBoard.vue'
+import { useSound } from '@/composables/soundManager'
+
 
 const gameStore = useGameStore()
 const stratagemsStore = useStratagemsStore()
+const { soundEnabled, toggleSound } = useSound()
 
 const startGame = () => {
   const firstStratagem = stratagemsStore.getRandomStratagem()
@@ -135,7 +143,31 @@ const startGame = () => {
   color: #ccc;
   font-size: 16px;
 }
+.sound-control {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
 
+.sound-button {
+  background: #2a2a2a;
+  border: 2px solid #4a4a4a;
+  color: white;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.sound-button:hover {
+  border-color: #ffd700;
+  transform: scale(1.1);
+}
 @keyframes glow {
   0% { text-shadow: 0 0 20px rgba(255, 215, 0, 0.5); }
   50% { text-shadow: 0 0 40px rgba(255, 215, 0, 0.8); }

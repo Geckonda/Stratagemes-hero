@@ -42,9 +42,11 @@ import { useStratagemsStore } from '@/stores/stratagemsStore'
 import Timer from './Timer.vue'
 import StratagemDisplay from './StratagemDisplay.vue'
 import InputHandler from './InputHandler.vue'
+import { useSound } from '@/composables/soundManager'
 
 const gameStore = useGameStore()
 const stratagemsStore = useStratagemsStore()
+const { playPressSound, playFailSound } = useSound() // Подключаем звуки
 
 onUnmounted(() => {
   gameStore.stopTimer()
@@ -53,6 +55,12 @@ onUnmounted(() => {
 watch(() => gameStore.gameStatus, (newStatus) => {
   if (newStatus === 'playing') {
     gameStore.startTimer()
+  }
+})
+
+watch(() => gameStore.wrongInput, (newValue) => {
+  if (newValue) {
+    playFailSound() // Играем звук ошибки
   }
 })
 
@@ -67,7 +75,9 @@ const loadNewStratagem = () => {
 const handleInput = (direction) => {
   // Не обрабатываем ввод если game over
   if (gameStore.gameStatus === 'gameover') return
-  
+
+  // Играем звук нажатия при каждом вводе
+  playPressSound()
   gameStore.addInput(direction)
   
   if (gameStore.gameStatus === 'success') {
