@@ -1,20 +1,23 @@
 <template>
   <div class="game-board">
     
-    <StratagemDisplay 
-      :stratagem="gameStore.currentStratagem"
-      :player-input="gameStore.playerInput"
-      :input-progress="gameStore.inputProgress"
-      :wrong-input="gameStore.wrongInput" 
-    />
-    
-    <InputHandler @input="handleInput" />
-    
-    <Timer 
-      :time-left="gameStore.timeLeft"
-      :max-time="gameStore.maxTime"
-    />
-    
+    <div class="content-wrapper">
+      <div>
+        <StratagemDisplay 
+          :stratagem="gameStore.currentStratagem"
+          :player-input="gameStore.playerInput"
+          :input-progress="gameStore.inputProgress"
+          :wrong-input="gameStore.wrongInput" 
+        />
+        
+        <InputHandler @input="handleInput" />
+        
+        <Timer 
+          :time-left="gameStore.timeLeft"
+          :max-time="gameStore.maxTime"
+        />
+        </div>
+    </div>
     <!-- Game Over сообщение -->
     <div v-if="gameStore.gameStatus === 'gameover'" class="gameover-overlay">
       <div class="gameover-content">
@@ -86,9 +89,15 @@ const returnToMenu = () => {
   padding: 2rem;
   color: white;
   position: relative;
-  min-height: 500px;
+  height: 100%;
 }
-
+.content-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;     /* Центрирование по вертикали */
+  justify-content: center;  /* Центрирование по горизонтали */
+  padding: 20px;
+}
 .success-message {
   color: #4caf50;
   font-size: 24px;

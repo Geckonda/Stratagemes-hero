@@ -55,6 +55,11 @@ const startGame = () => {
 </script>
 
 <style scoped>
+.main-wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
 .start-screen {
   display: flex;
   flex-direction: column;
