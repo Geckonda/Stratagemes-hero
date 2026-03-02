@@ -5,7 +5,11 @@ export function useKeyHandler(handler) {
     'ArrowUp': '⬆️',
     'ArrowDown': '⬇️',
     'ArrowLeft': '⬅️',
-    'ArrowRight': '➡️'
+    'ArrowRight': '➡️',
+    'w': '⬆️',
+    's': '⬇️',
+    'a': '⬅️',
+    'd': '➡️'
   }
   
   const handleKeyDown = (event) => {
