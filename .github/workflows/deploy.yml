@@ -1,0 +1,46 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: ['main']
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      
+      # Переходим в папку с проектом
+      - name: Navigate to project folder
+        run: cd stratagemes-hero
+      
+      # Устанавливаем зависимости и собираем проект внутри папки
+      - run: npm ci
+        working-directory: ./stratagemes-hero
+      - run: npm run build
+        working-directory: ./stratagemes-hero
+      
+      # Загружаем артефакт из папки dist внутри stratagemes-hero
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./stratagemes-hero/dist
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,5 +1,4 @@
 import { fileURLToPath, URL } from 'node:url'
-
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
@@ -15,4 +14,8 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
   },
+  // Добавьте эту секцию:
+  base: process.env.NODE_ENV === 'production' 
+    ? '/Stratagemes-hero/'  // Замените на название вашего репозитория
+    : '/',
 })
