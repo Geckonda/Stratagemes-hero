@@ -22,7 +22,9 @@
           :key="index"
           class="code-arrow"
         >
-          {{ direction }}
+          <DirectionArrow 
+            :direction="direction"
+          />
         </div>
       </div>
     </div>
@@ -32,6 +34,7 @@
 <script setup>
 import { computed } from 'vue'
 import StratagemIcon from '../game/StratagemIcon.vue'
+import DirectionArrow from '../game/DirectionArrow.vue'
 
 const props = defineProps({
   stratagems: Array,
@@ -133,10 +136,7 @@ const isUnlocked = (stratagem) => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #333;
-  border-radius: 4px;
   font-size: 14px;
-  border: 1px solid #4a4a4a;
 }
 
 /* Стили для скроллбара */
