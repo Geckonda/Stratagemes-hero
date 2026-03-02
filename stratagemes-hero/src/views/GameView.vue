@@ -23,7 +23,7 @@
       
       <!-- Главный экран (кнопка старт) -->
       <div v-else class="start-screen">
-        <h1 class="game-title">STRATAGEM HERO</h1>
+        <h1 class="game-title">STRATAGEMES HERO</h1>
         <p class="game-subtitle">Вводи комбинации как в Helldivers 2!</p>
         
         <div class="stats-preview" v-if="gameStore.score > 0">
