@@ -9,7 +9,7 @@
   >
     <div 
       class="arrow"
-      :style="rotationStyle"
+      :style="[rotationStyle, maskStyle]"
     ></div>
   </div>
 </template>
@@ -49,6 +49,16 @@ const arrowColor = computed(() => {
   if (props.entered) return '#f5f684'    // золотой для нажатых
   return '#FEF4F4'                        // белый по умолчанию
 })
+
+// Базовый URL для продакшена
+const baseUrl = import.meta.env.BASE_URL
+
+// Стиль для маски с правильным путем
+const maskStyle = computed(() => ({
+  backgroundColor: arrowColor.value,
+  mask: `url(${baseUrl}icons/arrow.svg) no-repeat center / contain`,
+  WebkitMask: `url(${baseUrl}icons/arrow.svg) no-repeat center / contain`
+}))
 </script>
 
 <style scoped>
@@ -58,18 +68,13 @@ const arrowColor = computed(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: transparent; /* Прозрачный фон */
+  background-color: transparent;
 }
 
 .arrow {
   width: 100%;
   height: 100%;
-  background-color: v-bind(arrowColor); /* Цвет стрелки из computed */
   transition: background-color 0.2s ease, transform 0.2s ease;
-  
-  /* Маска формирует форму стрелки из SVG */
-  mask: url('icons/arrow.svg') no-repeat center / contain;
-  -webkit-mask: url('icons/arrow.svg') no-repeat center / contain;
 }
 
 .arrow-wrapper.current .arrow {

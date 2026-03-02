@@ -24,9 +24,9 @@ const props = defineProps({
 })
 
 const iconPath = computed(() => {
-  // Vite автоматически обработает путь к assets
-
-  return `/icons/${props.iconFile}`
+  // Базовый путь зависит от окружения
+  const base = import.meta.env.PROD ? '/Stratagemes-hero' : ''
+  return `${base}/icons/${props.iconFile}`
 })
 </script>
 
