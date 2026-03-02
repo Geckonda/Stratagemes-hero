@@ -10,14 +10,15 @@
         :mistakes="gameStore.mistakes"
         :combo="gameStore.combo"
       />
-      <div class="sound-control">
+     
+    </template>
+    
+    <template #main>
+       <div class="sound-control">
         <button @click="toggleSound" class="sound-button">
           {{ soundEnabled ? '🔊' : '🔇' }}
         </button>
       </div>
-    </template>
-    
-    <template #main>
       <!-- Показываем GameBoard только если есть текущая стратагема и игра не в idle -->
       <GameBoard v-if="gameStore.currentStratagem && gameStore.gameStatus !== 'idle'" />
       
@@ -162,6 +163,10 @@ const startGame = () => {
   align-items: center;
   justify-content: center;
   transition: all 0.2s;
+  position: absolute;
+  top:15px;
+  right: 15px;
+  z-index: 10;
 }
 
 .sound-button:hover {

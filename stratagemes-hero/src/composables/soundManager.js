@@ -15,18 +15,17 @@ class SoundManager {
   playPress() {
     if (!this.soundEnabled.value) return
     this.pressAudio.currentTime = 0
-    this.pressAudio.play().catch(e => console.log('Audio play failed:', e))
+    this.pressAudio.play()
   }
 
   playFail() {
     if (!this.soundEnabled.value) return
     this.failAudio.currentTime = 0
-    this.failAudio.play().catch(e => console.log('Audio play failed:', e))
+    this.failAudio.play()
   }
 
   toggle() {
     this.soundEnabled.value = !this.soundEnabled.value
-    console.log('Sound enabled:', this.soundEnabled.value)
   }
 }
 
