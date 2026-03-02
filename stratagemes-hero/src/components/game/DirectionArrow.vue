@@ -4,7 +4,8 @@
     :class="{
       'entered': entered && !wrong,
       'current': current,
-      'wrong': wrong
+      'wrong': wrong,
+      'large': large
     }"
   >
     <div 
@@ -25,7 +26,8 @@ const props = defineProps({
   entered: Boolean,
   current: Boolean,
   wrong: Boolean,
-  correct: Boolean
+  correct: Boolean,
+  large: Boolean
 })
 
 const rotationStyle = computed(() => {
@@ -43,17 +45,14 @@ const rotationStyle = computed(() => {
   }
 })
 
-// Определяем цвета для разных состояний
 const arrowColor = computed(() => {
-  if (props.wrong) return '#ff4444'      // красный для ошибки
-  if (props.entered) return '#f5f684'    // золотой для нажатых
-  return '#FEF4F4'                        // белый по умолчанию
+  if (props.wrong) return '#ff4444'
+  if (props.entered) return '#f5f684'
+  return '#FEF4F4'
 })
 
-// Базовый URL для продакшена
 const baseUrl = import.meta.env.BASE_URL
 
-// Стиль для маски с правильным путем
 const maskStyle = computed(() => ({
   backgroundColor: arrowColor.value,
   mask: `url(${baseUrl}icons/arrow.svg) no-repeat center / contain`,
@@ -69,6 +68,14 @@ const maskStyle = computed(() => ({
   align-items: center;
   justify-content: center;
   background-color: transparent;
+}
+
+/* Только увеличение для больших экранов */
+@media screen and (min-width: 1920px) {
+  .arrow-wrapper.large {
+    width: 60px;
+    height: 60px;
+  }
 }
 
 .arrow {

@@ -5,8 +5,9 @@
         :icon-file="stratagem.icon" 
         :stratagem-name="stratagem.name"
         large
+        :extra-large="isLargeScreen"
       />
-      <h2>{{ stratagem.name }}</h2>
+      <h2 :class="{ 'large-screen': isLargeScreen }">{{ stratagem.name }}</h2>
     </div>
     
     <div class="code-display">
@@ -17,7 +18,8 @@
         :class="{
           'entered': index < playerInput.length,
           'current': index === playerInput.length && !wrongInput,
-          'wrong-current': index === playerInput.length && wrongInput
+          'wrong-current': index === playerInput.length && wrongInput,
+          'large-screen': isLargeScreen
         }"
       >
         <DirectionArrow 
@@ -26,18 +28,19 @@
           :current="index === playerInput.length && !wrongInput"
           :wrong="index === playerInput.length && wrongInput"
           :correct="playerInput[index] === direction"
+          :large="isLargeScreen"
         />
       </div>
     </div>
     
-    <div class="difficulty-badge" :class="'diff-' + stratagem.difficulty">
+    <div class="difficulty-badge" :class="['diff-' + stratagem.difficulty, { 'large-screen': isLargeScreen }]">
       Сложность: {{ '★'.repeat(stratagem.difficulty) }}
     </div>
-    
   </div>
 </template>
 
 <script setup>
+import { computed, onMounted, onUnmounted, ref } from 'vue'
 import StratagemIcon from './StratagemIcon.vue'
 import DirectionArrow from './DirectionArrow.vue'
 
@@ -46,6 +49,21 @@ defineProps({
   playerInput: Array,
   inputProgress: Number,
   wrongInput: Boolean
+})
+
+const isLargeScreen = ref(false)
+
+const checkScreenSize = () => {
+  isLargeScreen.value = window.innerWidth >= 1920
+}
+
+onMounted(() => {
+  checkScreenSize()
+  window.addEventListener('resize', checkScreenSize)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', checkScreenSize)
 })
 </script>
 
@@ -68,12 +86,36 @@ defineProps({
   font-size: 28px;
 }
 
+/* Только увеличение для больших экранов */
+@media screen and (min-width: 1920px) {
+  .stratagem-header h2.large-screen {
+    font-size: 42px;
+  }
+}
+
 .code-display {
   display: flex;
-  gap: 0.8rem;
   justify-content: center;
   margin: 30px 0;
   flex-wrap: wrap;
+}
+
+.code-cell {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  transition: all 0.3s;
+}
+
+/* Только увеличение для больших экранов */
+@media screen and (min-width: 1920px) {
+  .code-cell.large-screen {
+    width: 90px;
+    height: 90px;
+  }
 }
 
 
@@ -86,44 +128,23 @@ defineProps({
   font-size: 14px;
 }
 
+/* Только увеличение для больших экранов */
+@media screen and (min-width: 1920px) {
+  .difficulty-badge.large-screen {
+    font-size: 20px;
+    padding: 8px 20px;
+  }
+}
+
 .diff-1 { color: #4caf50; }
 .diff-2 { color: #8bc34a; }
 .diff-3 { color: #ffc107; }
 .diff-4 { color: #ff9800; }
 .diff-5 { color: #f44336; }
 
-.input-progress-bar {
-  width: 100%;
-  max-width: 400px;
-  height: 6px;
-  background: #333;
-  border-radius: 3px;
-  overflow: hidden;
-  margin: 20px auto;
-}
-
-.input-progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #4caf50, #8bc34a);
-  transition: width 0.3s;
-}
-
-.wrong-feedback {
-  color: #f44336;
-  font-size: 18px;
-  margin-top: 15px;
-  animation: fadeIn 0.3s;
-  font-weight: bold;
-}
-
 @keyframes shake {
   0%, 100% { transform: scale(1.1) translateX(0); }
   25% { transform: scale(1.1) translateX(-5px); }
   75% { transform: scale(1.1) translateX(5px); }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
 }
 </style>

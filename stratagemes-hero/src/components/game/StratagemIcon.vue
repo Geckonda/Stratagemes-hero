@@ -3,7 +3,11 @@
     :src="iconPath" 
     :alt="stratagemName"
     class="stratagem-icon"
-    :class="{ small, large }"
+    :class="{ 
+      small, 
+      large,
+      'extra-large': extraLarge 
+    }"
   />
 </template>
 
@@ -20,11 +24,11 @@ const props = defineProps({
     default: 'Стратагема'
   },
   small: Boolean,
-  large: Boolean
+  large: Boolean,
+  extraLarge: Boolean
 })
 
 const iconPath = computed(() => {
-  // Базовый путь зависит от окружения
   const base = import.meta.env.PROD ? '/Stratagemes-hero' : ''
   return `${base}/icons/${props.iconFile}`
 })
@@ -45,5 +49,13 @@ const iconPath = computed(() => {
 .stratagem-icon.large {
   width: 48px;
   height: 48px;
+}
+
+/* Только увеличение для больших экранов */
+@media screen and (min-width: 1920px) {
+  .stratagem-icon.large.extra-large {
+    width: 72px;
+    height: 72px;
+  }
 }
 </style>
