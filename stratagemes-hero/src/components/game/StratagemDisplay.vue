@@ -7,7 +7,6 @@
         large
         :extra-large="isLargeScreen"
       />
-      <h2 :class="{ 'large-screen': isLargeScreen }">{{ stratagem.name }}</h2>
     </div>
     
     <div class="code-display">
@@ -33,9 +32,6 @@
       </div>
     </div>
     
-    <div class="difficulty-badge" :class="['diff-' + stratagem.difficulty, { 'large-screen': isLargeScreen }]">
-      Сложность: {{ '★'.repeat(stratagem.difficulty) }}
-    </div>
   </div>
 </template>
 

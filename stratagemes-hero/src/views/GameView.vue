@@ -24,7 +24,6 @@
         <div class="stats-preview" v-if="gameStore.score > 0">
           <h2>Последняя игра:</h2>
           <p>Счет: {{ gameStore.score }}</p>
-          <p>Ошибок: {{ gameStore.mistakes }}</p>
         </div>
         
         <button @click="startGame" class="menu-button start-button">
