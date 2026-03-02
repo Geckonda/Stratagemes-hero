@@ -7,7 +7,7 @@ export const useGameStore = defineStore('game', {
     score: 0,
     mistakes: 0,
     gameStatus: 'idle', // 'idle', 'playing', 'success', 'failed', 'gameover'
-    timeLeft: 100,
+    timeLeft: 10,
     maxTime: 10,
     combo: 0,
     wrongInput: false,
@@ -73,8 +73,8 @@ export const useGameStore = defineStore('game', {
         this.mistakes++
         this.combo = 0
         this.wrongInput = true
-
         this.playerInput = []
+
         
         setTimeout(() => {
             this.wrongInput = false

@@ -70,7 +70,7 @@ const handleInput = (direction) => {
   gameStore.addInput(direction)
   
   if (gameStore.gameStatus === 'success') {
-    setTimeout(loadNewStratagem, 500)
+    setTimeout(loadNewStratagem, 50)
   }
 }
 
