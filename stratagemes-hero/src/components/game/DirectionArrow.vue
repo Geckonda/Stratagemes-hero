@@ -68,8 +68,8 @@ const arrowColor = computed(() => {
   transition: background-color 0.2s ease, transform 0.2s ease;
   
   /* Маска формирует форму стрелки из SVG */
-  mask: url('/src/assets/icons/arrow.svg') no-repeat center / contain;
-  -webkit-mask: url('/src/assets/icons/arrow.svg') no-repeat center / contain;
+  mask: url('icons/arrow.svg') no-repeat center / contain;
+  -webkit-mask: url('icons/arrow.svg') no-repeat center / contain;
 }
 
 .arrow-wrapper.current .arrow {

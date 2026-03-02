@@ -26,7 +26,7 @@ const props = defineProps({
 const iconPath = computed(() => {
   // Vite автоматически обработает путь к assets
 
-  return `/src/assets/icons/${props.iconFile}`
+  return `/icons/${props.iconFile}`
 })
 </script>
 
