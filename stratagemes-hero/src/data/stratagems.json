@@ -1,0 +1,424 @@
+{
+  "stratagems": [
+    {
+      "id": "reinforce",
+      "name": "Подкрепление",
+      "code": ["⬆️", "⬇️", "➡️", "⬅️", "⬆️"],
+      "icon": "ReinforceIcon.svg",
+      "difficulty": 1
+    },
+    {
+      "id": "resupply",
+      "name": "Припасы",
+      "code": ["⬇️", "⬇️", "⬆️", "➡️"],
+      "icon": "ResupplyIcon.svg",
+      "difficulty": 1
+    },
+    {
+      "id": "eagle-rearm",
+      "name": "Перезарядка орлов",
+      "code": ["⬆️", "⬆️", "⬅️", "⬆️", "➡️"],
+      "icon": "HD2_Eagle_Rearm_Icon.svg",
+      "difficulty": 2
+    },
+    {
+      "id": "sos-beacon",
+      "name": "SOS маяк",
+      "code": ["⬆️", "⬇️", "➡️", "⬆️"],
+      "icon": "SOSIcon.svg",
+      "difficulty": 1
+    },
+    {
+      "id": "super-earth-flag",
+      "name": "Флаг Супер-Земли",
+      "code": ["⬇️", "⬆️", "⬇️", "⬆️"],
+      "icon": "SuperEarthFlag.svg",
+      "difficulty": 2
+    },
+    {
+      "id": "upload-data",
+      "name": "Загрузка данных",
+      "code": ["⬇️", "⬇️", "⬆️", "⬆️", "⬆️"],
+      "icon": "UploadDataIcon.svg",
+      "difficulty": 2
+    },
+    {
+      "id": "hellbomb",
+      "name": "Хеллбомба",
+      "code": ["⬇️", "⬆️", "⬅️", "⬇️", "⬆️", "➡️", "⬇️", "⬆️"],
+      "icon": "Hellbomb.svg",
+      "difficulty": 5
+    },
+    {
+      "id": "seismic-probe",
+      "name": "Сейсмический зонд",
+      "code": ["⬆️", "⬆️", "⬅️", "➡️", "⬇️", "⬇️"],
+      "icon": "SeismicProbeIcon.svg",
+      "difficulty": 4
+    },
+    {
+      "id": "eagle-strafing-run",
+      "name": "Штурмовой пролет",
+      "code": ["⬆️", "➡️", "➡️"],
+      "icon": "EagleStrafigicon.svg",
+      "difficulty": 1
+    },
+    {
+      "id": "eagle-airstrike",
+      "name": "Авиаудар",
+      "code": ["⬆️", "➡️", "⬇️", "➡️"],
+      "icon": "EagleAirstrikeicon.svg",
+      "difficulty": 2
+    },
+    {
+      "id": "eagle-cluster-bomb",
+      "name": "Кассетная бомба",
+      "code": ["⬆️", "➡️", "⬇️", "⬇️", "➡️"],
+      "icon": "EagleClusterbombicon.svg",
+      "difficulty": 3
+    },
+    {
+      "id": "eagle-napalm",
+      "name": "Напалмовый удар",
+      "code": ["⬆️", "➡️", "⬇️", "⬆️"],
+      "icon": "EagleNapalmicon.svg",
+      "difficulty": 2
+    },
+    {
+      "id": "eagle-smoke",
+      "name": "Дымовой удар",
+      "code": ["⬆️", "➡️", "⬆️", "⬇️"],
+      "icon": "EagleSmokeicon.svg",
+      "difficulty": 2
+    },
+    {
+      "id": "eagle-110mm-rockets",
+      "name": "110мм ракеты",
+      "code": ["⬆️", "➡️", "⬆️", "⬅️"],
+      "icon": "EagleRocketpodicon.svg",
+      "difficulty": 2
+    },
+    {
+      "id": "eagle-500kg-bomb",
+      "name": "500кг бомба",
+      "code": ["⬆️", "➡️", "⬇️", "⬇️", "⬇️"],
+      "icon": "Eagle500icon.svg",
+      "difficulty": 3
+    },
+    {
+      "id": "orbital-gatling",
+      "name": "Орбитальная пушка",
+      "code": ["➡️", "⬇️", "⬅️", "⬆️", "⬆️"],
+      "icon": "OrbitalGatlingicon.svg",
+      "difficulty": 3
+    },
+    {
+      "id": "orbital-airburst",
+      "name": "Орбитальный воздушный взрыв",
+      "code": ["➡️", "➡️", "➡️"],
+      "icon": "OrbitalAirbursticon.svg",
+      "difficulty": 1
+    },
+    {
+      "id": "orbital-120mm",
+      "name": "120мм залп",
+      "code": ["➡️", "➡️", "⬇️", "⬅️", "➡️", "⬇️"],
+      "icon": "Orbital120icon.svg",
+      "difficulty": 3
+    },
+    {
+      "id": "orbital-380mm",
+      "name": "380мм залп",
+      "code": ["➡️", "⬇️", "⬆️", "⬆️", "⬅️", "⬇️", "⬇️"],
+      "icon": "Orbital380icon.svg",
+      "difficulty": 4
+    },
+    {
+      "id": "orbital-walking",
+      "name": "Шагающий залп",
+      "code": ["➡️", "⬇️", "➡️", "⬇️", "➡️", "⬇️"],
+      "icon": "OrbitalWalkingicon.svg",
+      "difficulty": 3
+    },
+    {
+      "id": "orbital-laser",
+      "name": "Орбитальный лазер",
+      "code": ["⬇️", "⬇️", "⬇️", "⬆️"],
+      "icon": "OrbitalLasericon.svg",
+      "difficulty": 2
+    },
+    {
+      "id": "orbital-railcannon",
+      "name": "Орбитальная рельсовая пушка",
+      "code": ["➡️", "⬆️", "⬇️", "⬇️", "⬇️"],
+      "icon": "OrbitalRailcannonicon.svg",
+      "difficulty": 3
+    },
+    {
+      "id": "orbital-precision",
+      "name": "Точный удар",
+      "code": ["➡️", "⬆️", "⬇️"],
+      "icon": "OrbitalPrecisionicon.svg",
+      "difficulty": 1
+    },
+    {
+      "id": "orbital-gas",
+      "name": "Газовая атака",
+      "code": ["➡️", "➡️", "⬇️", "⬆️", "⬆️"],
+      "icon": "OrbitalGasicon.svg",
+      "difficulty": 2
+    },
+    {
+      "id": "orbital-ems",
+      "name": "ЭМИ залп",
+      "code": ["➡️", "⬆️", "⬅️", "⬇️", "⬆️", "⬆️"],
+      "icon": "OrbitalEMSicon.svg",
+      "difficulty": 3
+    },
+    {
+      "id": "orbital-smoke",
+      "name": "Дымовая завеса",
+      "code": ["➡️", "➡️", "⬇️", "⬆️"],
+      "icon": "OrbitalSmokeicon.svg",
+      "difficulty": 1
+    },
+    {
+      "id": "mg-43-machine-gun",
+      "name": "Пулемет MG-43",
+      "code": ["⬇️", "⬅️", "⬆️", "⬇️", "➡️"],
+      "icon": "MG-43icon.svg",
+      "difficulty": 2
+    },
+    {
+      "id": "apw-1-anti-materiel-rifle",
+      "name": "Противотанковая винтовка",
+      "code": ["⬇️", "⬅️", "➡️", "⬆️", "⬇️"],
+      "icon": "APW-1icon.svg",
+      "difficulty": 2
+    },
+    {
+      "id": "m-105-stalwart",
+      "name": "Stalwart",
+      "code": ["⬇️", "⬅️", "⬆️", "⬆️", "⬅️"],
+      "icon": "M-105icon.svg",
+      "difficulty": 2
+    },
+    {
+      "id": "eat-17-expendable-anti-tank",
+      "name": "Одноразовый гранатомет",
+      "code": ["⬇️", "⬇️", "⬅️", "⬆️", "➡️"],
+      "icon": "EAT-17icon.svg",
+      "difficulty": 2
+    },
+    {
+      "id": "gr-8-recoilless-rifle",
+      "name": "Безоткатное ружье",
+      "code": ["⬇️", "⬅️", "➡️", "⬇️", "⬆️", "⬆️"],
+      "icon": "GR-8icon.svg",
+      "difficulty": 3
+    },
+    {
+      "id": "flam-40-flamethrower",
+      "name": "Огнемет",
+      "code": ["⬇️", "⬅️", "⬆️", "⬇️", "⬆️", "➡️"],
+      "icon": "FLAM-40icon.svg",
+      "difficulty": 3
+    },
+    {
+      "id": "ac-8-autocannon",
+      "name": "Автопушка",
+      "code": ["⬇️", "⬅️", "⬇️", "⬆️", "⬆️", "⬅️"],
+      "icon": "AC-8icon.svg",
+      "difficulty": 3
+    },
+    {
+      "id": "mg-206-heavy-machine-gun",
+      "name": "Тяжелый пулемет",
+      "code": ["⬇️", "⬅️", "⬆️", "⬇️", "⬆️", "⬆️"],
+      "icon": "HMGTurreticon.svg",
+      "difficulty": 3
+    },
+    {
+      "id": "rs-422-railgun",
+      "name": "Рельсотрон",
+      "code": ["⬇️", "➡️", "⬅️", "⬇️", "⬆️", "⬅️"],
+      "icon": "RS-422icon.svg",
+      "difficulty": 3
+    },
+    {
+      "id": "faf-14-spear",
+      "name": "Spear",
+      "code": ["⬇️", "⬇️", "⬅️", "⬆️", "➡️", "⬇️"],
+      "icon": "FAF-14icon.svg",
+      "difficulty": 3
+    },
+    {
+      "id": "las-98-laser-cannon",
+      "name": "Лазерная пушка",
+      "code": ["⬇️", "⬅️", "⬇️", "⬆️", "⬆️"],
+      "icon": "LAS-98icon.svg",
+      "difficulty": 2
+    },
+    {
+      "id": "las-99-quasar-cannon",
+      "name": "Квазарная пушка",
+      "code": ["⬇️", "⬇️", "⬆️", "⬅️", "➡️", "⬇️"],
+      "icon": "LAS-99icon.svg",
+      "difficulty": 3
+    },
+    {
+      "id": "arc-3-arc-thrower",
+      "name": "Дуговой метатель",
+      "code": ["⬇️", "⬅️", "⬇️", "⬆️", "⬆️", "⬅️"],
+      "icon": "ARC-3icon.svg",
+      "difficulty": 3
+    },
+    {
+      "id": "gl-21-grenade-launcher",
+      "name": "Гранатомет",
+      "code": ["⬇️", "⬅️", "⬆️", "⬅️", "⬇️"],
+      "icon": "GL-21icon.svg",
+      "difficulty": 2
+    },
+    {
+      "id": "ax-ar-23-guard-dog",
+      "name": "Сторожевой пес",
+      "code": ["⬇️", "⬆️", "⬅️", "⬆️", "➡️", "⬇️"],
+      "icon": "AX-AR-23icon.svg",
+      "difficulty": 3
+    },
+    {
+      "id": "ax-las-5-guard-dog",
+      "name": "Сторожевой пес (лазер)",
+      "code": ["⬇️", "⬆️", "⬅️", "⬆️", "➡️", "⬅️"],
+      "icon": "AX-LAS-5icon.svg",
+      "difficulty": 3
+    },
+    {
+      "id": "b-1-supply-pack",
+      "name": "Ранец снабжения",
+      "code": ["⬇️", "⬅️", "⬇️", "⬆️", "⬆️", "⬇️"],
+      "icon": "B-1icon.svg",
+      "difficulty": 3
+    },
+    {
+      "id": "lift-850-jump-pack",
+      "name": "Прыжковый ранец",
+      "code": ["⬇️", "⬆️", "⬆️", "⬇️", "⬆️"],
+      "icon": "LIFT-850icon.svg",
+      "difficulty": 2
+    },
+    {
+      "id": "sh-20-ballistic-shield",
+      "name": "Баллистический щит",
+      "code": ["⬇️", "⬅️", "⬇️", "⬆️", "⬆️", "⬅️"],
+      "icon": "SH-20icon.svg",
+      "difficulty": 3
+    },
+    {
+      "id": "sh-32-shield-generator",
+      "name": "Генератор щита",
+      "code": ["⬇️", "⬆️", "⬅️", "➡️", "⬅️", "➡️"],
+      "icon": "SH-32icon.svg",
+      "difficulty": 3
+    },
+    {
+      "id": "mg-sentry",
+      "name": "Пулеметная турель",
+      "code": ["⬇️", "⬆️", "⬅️", "➡️", "⬆️"],
+      "icon": "MGsentryicon.svg",
+      "difficulty": 2
+    },
+    {
+      "id": "gatling-sentry",
+      "name": "Пулеметная турель",
+      "code": ["⬇️", "⬆️", "➡️", "⬅️", "⬆️"],
+      "icon": "Gatlingsentryicon.svg",
+      "difficulty": 2
+    },
+    {
+      "id": "mortar-sentry",
+      "name": "Минометная турель",
+      "code": ["⬇️", "⬆️", "⬅️", "⬆️", "➡️", "⬇️"],
+      "icon": "Mortarsentryicon.svg",
+      "difficulty": 3
+    },
+    {
+      "id": "autocannon-sentry",
+      "name": "Автопушечная турель",
+      "code": ["⬇️", "⬆️", "⬅️", "⬆️", "➡️", "⬇️", "⬆️"],
+      "icon": "Autocannonsentryicon.svg",
+      "difficulty": 4
+    },
+    {
+      "id": "rocket-sentry",
+      "name": "Ракетная турель",
+      "code": ["⬇️", "⬆️", "➡️", "➡️", "⬅️"],
+      "icon": "Missilesentryicon.svg",
+      "difficulty": 3
+    },
+    {
+      "id": "ems-mortar-sentry",
+      "name": "ЭМИ миномет",
+      "code": ["⬇️", "⬆️", "⬅️", "⬇️", "➡️", "➡️"],
+      "icon": "EMSmortaricon.svg",
+      "difficulty": 3
+    },
+    {
+      "id": "patriot-sentry",
+      "name": "Пиротехническая турель",
+      "code": ["⬇️", "⬆️", "⬅️", "⬆️", "⬇️", "➡️"],
+      "icon": "PatriotIcon.svg",
+      "difficulty": 3
+    },
+    {
+      "id": "anti-personnel-minefield",
+      "name": "Противопехотное минное поле",
+      "code": ["⬇️", "⬅️", "⬆️", "➡️"],
+      "icon": "Minefieldicon.svg",
+      "difficulty": 1
+    },
+    {
+      "id": "incendiary-mines",
+      "name": "Зажигательные мины",
+      "code": ["⬇️", "⬅️", "⬅️", "⬆️", "⬇️"],
+      "icon": "Fireminefieldicon.svg",
+      "difficulty": 2
+    },
+    {
+      "id": "tesla-tower",
+      "name": "Башня Теслы",
+      "code": ["⬇️", "⬆️", "⬆️", "⬆️", "⬇️"],
+      "icon": "Teslaicon.svg",
+      "difficulty": 3
+    },
+    {
+      "id": "shield-generator-relay",
+      "name": "Генератор щита",
+      "code": ["⬇️", "⬆️", "⬅️", "➡️", "⬅️", "➡️", "⬇️"],
+      "icon": "Shieldrelayicon.svg",
+      "difficulty": 4
+    },
+    {
+      "id": "hmg-emplacement",
+      "name": "Тяжелый пулемет",
+      "code": ["⬇️", "⬆️", "⬆️", "⬅️", "⬇️"],
+      "icon": "HMGTurreticon.svg",
+      "difficulty": 2
+    },
+    {
+      "id": "artillery",
+      "name": "Артиллерия SEAF",
+      "code": ["➡️", "⬆️", "⬆️", "⬆️", "⬇️"],
+      "icon": "Artillery.svg",
+      "difficulty": 3
+    },
+    {
+      "id": "illumination-flare",
+      "name": "Осветительная ракета",
+      "code": ["➡️", "⬆️", "⬆️", "⬇️", "⬇️"],
+      "icon": "IlluminationFlare.svg",
+      "difficulty": 2
+    }
+  ]
+}
