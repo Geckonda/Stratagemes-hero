@@ -109,6 +109,7 @@ export const useGameStore = defineStore('game', {
     },
     
     startGame() {
+      this.score = 0
       this.gameStatus = 'playing'
       this.playerInput = []
       this.wrongInput = false
