@@ -47,15 +47,15 @@ const iconPath = computed(() => {
 }
 
 .stratagem-icon.large {
-  width: 48px;
-  height: 48px;
+  width: 165px;
+  height: 165px;
 }
 
 /* Только увеличение для больших экранов */
 @media screen and (min-width: 1920px) {
   .stratagem-icon.large.extra-large {
-    width: 72px;
-    height: 72px;
+    width: 172px;
+    height: 172px;
   }
 }
 </style>
