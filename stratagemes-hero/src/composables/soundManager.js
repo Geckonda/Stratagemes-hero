@@ -3,8 +3,10 @@ import { ref } from 'vue'
 class SoundManager {
   constructor() {
     this.soundEnabled = ref(true)
-    this.pressAudio = new Audio('/audio/key-press.mp3')
-    this.failAudio = new Audio('/audio/key-press-fail.mp3')
+    const baseUrl = import.meta.env.BASE_URL || ''
+
+    this.pressAudio = new Audio(`${baseUrl}audio/key-press.mp3`)
+    this.failAudio = new Audio(`${baseUrl}audio/key-press-fail.mp3`)
     
     this.pressAudio.volume = 0.5
     this.failAudio.volume = 0.5
