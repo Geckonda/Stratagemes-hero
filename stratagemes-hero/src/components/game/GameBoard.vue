@@ -1,9 +1,5 @@
 <template>
   <div class="game-board">
-    <Timer 
-      :time-left="gameStore.timeLeft"
-      :max-time="gameStore.maxTime"
-    />
     
     <StratagemDisplay 
       :stratagem="gameStore.currentStratagem"
@@ -14,13 +10,15 @@
     
     <InputHandler @input="handleInput" />
     
-
-    
+    <Timer 
+      :time-left="gameStore.timeLeft"
+      :max-time="gameStore.maxTime"
+    />
     
     <!-- Game Over сообщение -->
     <div v-if="gameStore.gameStatus === 'gameover'" class="gameover-overlay">
       <div class="gameover-content">
-        <h1>⏰ Провал ⏰</h1>
+        <h1>Провал</h1>
         <div class="final-score">
           <p>Твой счет: {{ gameStore.score }}</p>
           <p>Ошибок: {{ gameStore.mistakes }}</p>
@@ -151,22 +149,7 @@ const returnToMenu = () => {
   color: #fff;
 }
 
-.menu-button {
-  padding: 15px 30px;
-  font-size: 20px;
-  background: linear-gradient(135deg, #4caf50, #45a049);
-  color: white;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all 0.3s;
-  font-weight: bold;
-}
 
-.menu-button:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 20px rgba(76, 175, 80, 0.5);
-}
 
 @keyframes pulse {
   0% { transform: scale(1); }

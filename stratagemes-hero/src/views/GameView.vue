@@ -27,7 +27,7 @@
           <p>Ошибок: {{ gameStore.mistakes }}</p>
         </div>
         
-        <button @click="startGame" class="start-button">
+        <button @click="startGame" class="menu-button start-button">
           Start
         </button>
         
@@ -100,8 +100,6 @@ const startGame = () => {
 .start-button {
   padding: 20px 60px;
   font-size: 32px;
-  background: linear-gradient(135deg, #4caf50, #45a049);
-  color: #f5f684;
   border: none;
   border-radius: 15px;
   cursor: pointer;
