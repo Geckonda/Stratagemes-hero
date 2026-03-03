@@ -23,13 +23,17 @@ const backgroundStyle = computed(() => ({
 .game-layout {
   display: grid;
   grid-template-columns: 350px 1fr;
-  min-height: 100vh;
-  overflow: hidden;
+  height: 100vh;
 }
 
 .sidebar {
   background-color: #2a2a2a;
   border-right: 2px solid #4a4a4a;
+
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
 }
 
 .main-content{  

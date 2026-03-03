@@ -19,7 +19,6 @@ defineProps({
   padding: 20px;
   border-radius: 8px;
   color: white;
-  margin-top: 20px;
 }
 
 .score-board div {

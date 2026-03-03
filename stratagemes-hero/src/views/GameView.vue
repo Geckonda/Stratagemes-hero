@@ -1,10 +1,14 @@
 <template>
   <GameLayout>
+    
     <template #sidebar>
-      <StratagemList 
+    <h3 class="sidebar-title">Стратагемы</h3>
+      <div class="sidebar-top">
+        <StratagemList 
         :stratagems="stratagemsStore.allStratagems"
         :unlocked="stratagemsStore.unlockedStratagems"
-      />
+        />
+    </div>
       <ScoreBoard 
         :score="gameStore.score"
         :mistakes="gameStore.mistakes"
@@ -77,6 +81,18 @@ const startGame = () => {
   height: 100%;
   display: flex;
   flex-direction: column;
+}
+.sidebar-top {
+  flex: 1 1 auto;
+  overflow: hidden;
+  min-height: 0 ;
+}
+.sidebar-title{
+    text-align: center;
+    color: var(--main-accent);
+    font-size: 24px;
+    margin:0;
+    padding: 20px 0;
 }
 .start-screen {
   display: flex;
@@ -155,7 +171,6 @@ const startGame = () => {
 .sound-control {
   display: flex;
   justify-content: center;
-  margin-bottom: 10px;
 }
 
 .sound-button {

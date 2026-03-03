@@ -1,6 +1,5 @@
 <template>
   <div class="stratagem-list">
-    <h3>Стратагемы</h3>
     
     <div v-for="stratagem in sortedStratagems" :key="stratagem.id" class="stratagem-card">
       <div class="stratagem-header">
@@ -62,9 +61,9 @@ const isUnlocked = (stratagem) => {
   color: white;
   background: var(--main-background);
   border-radius: 8px;
-  padding: 15px;
+  padding: 0 15px;
+  height: 100%;
   overflow-y: auto;
-  height: 400px;
 }
 
 .stratagem-list h3 {
