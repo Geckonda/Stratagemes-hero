@@ -43,10 +43,31 @@ import Timer from './Timer.vue'
 import StratagemDisplay from './StratagemDisplay.vue'
 import InputHandler from './InputHandler.vue'
 import { useSound } from '@/composables/soundManager'
+import { useGlobalInput } from '@/composables/useGlobalInput'
 
 const gameStore = useGameStore()
 const stratagemsStore = useStratagemsStore()
 const { playPressSound, playFailSound } = useSound() // Подключаем звуки
+
+useGlobalInput({
+  Space: () => {
+    if (gameStore.gameStatus === 'gameover') {
+      gameStore.returnToMenu()
+    }
+  }
+})
+
+useGlobalInput({
+  Escape: () => {
+    console.log("ESC");
+    
+    if(gameStore.gameStatus === 'playing') {
+        console.log("GO");
+        
+      returnToMenu()
+    }
+  }
+})
 
 onUnmounted(() => {
   gameStore.stopTimer()

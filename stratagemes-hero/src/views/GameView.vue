@@ -49,11 +49,21 @@ import GameBoard from '@/components/game/GameBoard.vue'
 import StratagemList from '@/components/ui/StratagemList.vue'
 import ScoreBoard from '@/components/ui/ScoreBoard.vue'
 import { useSound } from '@/composables/soundManager'
-
+import { useGlobalInput } from '@/composables/useGlobalInput'
 
 const gameStore = useGameStore()
 const stratagemsStore = useStratagemsStore()
 const { soundEnabled, toggleSound } = useSound()
+
+let startedByKey = false
+
+useGlobalInput({
+  Space: () => {
+    if (gameStore.gameStatus === 'idle') {
+      startGame()
+    }
+  }
+})
 
 const startGame = () => {
   const firstStratagem = stratagemsStore.getRandomStratagem()
