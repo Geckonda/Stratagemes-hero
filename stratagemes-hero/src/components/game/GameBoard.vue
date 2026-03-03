@@ -117,7 +117,7 @@ const returnToMenu = () => {
   flex-direction: column;
   align-items: center;
   gap: 2rem;
-  padding: 2rem;
+  padding: 0;
   color: white;
   position: relative;
   height: 100%;
