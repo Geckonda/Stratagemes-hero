@@ -42,7 +42,7 @@ const progress = computed(() => {
 
 .timer-progress-fill {
   height: 100%;
-  background: #f5f684;
+  background: var(--main-accent);
   transition: width 0.3s ease;
 }
 

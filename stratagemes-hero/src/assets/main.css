@@ -1,3 +1,14 @@
+:root{
+    --main-accent: #ffff7d;
+    --primary-background: #1a1a1a;
+    --secondary-background: #2a2a2a;
+    --thirsty-background: #3a3a3a;
+    --fourthly-background: #4a4a4a;
+
+    --light-shine: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+
 .game-board {
   display: flex;
   flex-direction: column;
@@ -23,15 +34,16 @@
 
 .progress-fill {
   height: 100%;
-  background-color: #f5f684;
+  background-color: var(--main-accent);
   transition: width 0.3s;
 }
 
 .menu-button {
   padding: 15px 30px;
   font-size: 20px;
-  background: linear-gradient(135deg, #4caf50, #45a049);
-  color: #f5f684;
+  /* background: linear-gradient(135deg, #4caf50, #45a049); */
+  background: var(--fourthly-background);
+  color: var(--main-accent);
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -41,5 +53,4 @@
 
 .menu-button:hover {
   transform: scale(1.1);
-  box-shadow: 0 0 20px rgba(76, 175, 80, 0.5);
 }

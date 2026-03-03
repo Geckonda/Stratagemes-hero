@@ -16,7 +16,6 @@ defineProps({
 
 <style scoped>
 .score-board {
-  background-color: #2a2a2a;
   padding: 20px;
   border-radius: 8px;
   color: white;
@@ -29,6 +28,6 @@ defineProps({
 }
 
 .combo {
-  color: #ff9800;
+  color: var(--main-accent);
 }
 </style>

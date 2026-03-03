@@ -81,8 +81,8 @@ const startGame = () => {
 .game-title {
   font-size: 48px;
   margin-bottom: 10px;
-  color: #f5f684;
-  text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+  color: var(--main-accent);
+  text-shadow: var(--light-shine);
   animation: glow 2s ease-in-out infinite;
 }
 
@@ -119,12 +119,10 @@ const startGame = () => {
   transition: all 0.3s;
   font-weight: bold;
   margin-bottom: 40px;
-  box-shadow: 0 0 30px rgba(76, 175, 80, 0.3);
 }
 
 .start-button:hover {
   transform: scale(1.1);
-  box-shadow: 0 0 50px rgba(76, 175, 80, 0.5);
 }
 
 .instructions {
@@ -151,7 +149,7 @@ const startGame = () => {
 }
 
 .sound-button {
-  background: #2a2a2a;
+  background: var(--secondary-background);
   border: 2px solid #4a4a4a;
   color: white;
   width: 80px;
@@ -170,7 +168,7 @@ const startGame = () => {
 }
 
 .sound-button:hover {
-  border-color: #ffd700;
+  border-color: var(--main-accent);
   transform: scale(1.1);
 }
 @keyframes glow {

@@ -60,7 +60,7 @@ const isUnlocked = (stratagem) => {
 <style scoped>
 .stratagem-list {
   color: white;
-  background: #2a2a2a;
+  background: var(--main-background);
   border-radius: 8px;
   padding: 15px;
   overflow-y: auto;
@@ -70,7 +70,7 @@ const isUnlocked = (stratagem) => {
 .stratagem-list h3 {
   margin-top: 0;
   margin-bottom: 15px;
-  color: #ffd700;
+  color: var(--main-accent);
   text-align: center;
   font-size: 20px;
   border-bottom: 2px solid #4a4a4a;
@@ -78,7 +78,7 @@ const isUnlocked = (stratagem) => {
 }
 
 .stratagem-card {
-  background: #1a1a1a;
+  background: var(--primary-background);
   border-radius: 8px;
   padding: 10px;
   margin-bottom: 10px;
@@ -87,7 +87,7 @@ const isUnlocked = (stratagem) => {
 }
 
 .stratagem-card:hover {
-  border-color: #ffd700;
+  border-color: var(--main-accent);
   transform: translateX(5px);
   box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
 }
