@@ -12,16 +12,36 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+    import { ref, onMounted, onUnmounted, computed } from 'vue'
+    import { useGameStore } from '@/stores/gameStore'
 
-const props = defineProps({
-  timeLeft: Number,
-  maxTime: Number
-})
+    const store = useGameStore()
 
-const progress = computed(() => {
-  return (props.timeLeft / props.maxTime) * 100
-})
+    const visualTimeLeft = ref(store.timeLeft)
+    let rafId = null
+
+    const update = () => {
+    if (store.timerEndsAt) {
+        const remaining =
+        (store.timerEndsAt - performance.now()) / 1000
+
+        visualTimeLeft.value = Math.max(remaining, 0)
+    }
+
+    rafId = requestAnimationFrame(update)
+    }
+
+    onMounted(() => {
+    update()
+    })
+
+    onUnmounted(() => {
+    cancelAnimationFrame(rafId)
+    })
+
+    const progress = computed(() => {
+    return (visualTimeLeft.value / store.maxTime) * 100
+    })
 </script>
 
 <style scoped>

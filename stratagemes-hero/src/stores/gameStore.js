@@ -9,6 +9,8 @@ export const useGameStore = defineStore('game', {
     gameStatus: 'idle', // 'idle', 'playing', 'success', 'failed', 'gameover'
     timeLeft: 10,
     maxTime: 10,
+    timerEndsAt: null,
+    timerInterval: null,
     combo: 0,
     wrongInput: false,
     timerInterval: null,
@@ -33,20 +35,25 @@ export const useGameStore = defineStore('game', {
     },
     
     startTimer() {
-      if (this.timerInterval) return
-      
-      this.timerInterval = setInterval(() => {
-        if (this.gameStatus === 'playing' && this.timeLeft > 0) {
-          this.timeLeft--
-          
-          if (this.timeLeft === 0) {
-            // Время вышло - GAME OVER!
+        if (this.timerInterval) return
+
+        const now = performance.now()
+        this.timerEndsAt = now + this.timeLeft * 1000
+
+        this.timerInterval = setInterval(() => {
+            if (this.gameStatus !== 'playing') return
+
+            const remaining = Math.ceil(
+            (this.timerEndsAt - performance.now()) / 1000
+            )
+
+            this.timeLeft = Math.max(remaining, 0)
+
+            if (this.timeLeft === 0) {
             this.gameStatus = 'gameover'
             this.stopTimer()
-            // Не увеличиваем mistakes, просто game over
-          }
-        }
-      }, 1000)
+            }
+        }, 200) // можно чаще, логика всё равно дискретная
     },
     
     stopTimer() {
@@ -58,6 +65,7 @@ export const useGameStore = defineStore('game', {
     
     addTime(seconds) {
       this.timeLeft = Math.min(this.timeLeft + seconds, this.maxTime * 2)
+      this.timerEndsAt += seconds * 1000
     },
     
     resetTimer() {
