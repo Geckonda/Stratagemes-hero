@@ -3,19 +3,21 @@ import { onMounted, onUnmounted } from 'vue'
 export function useKeyHandler(handler) {
   const keyMap = {
     'ArrowUp': '⬆️',
-    'ArrowDown': '⬇️',
+    'ArrowDown': '⬇️', 
     'ArrowLeft': '⬅️',
     'ArrowRight': '➡️',
-    'w': '⬆️',
-    's': '⬇️',
-    'a': '⬅️',
-    'd': '➡️'
+    'KeyW': '⬆️',
+    'KeyS': '⬇️',
+    'KeyA': '⬅️',
+    'KeyD': '➡️',
   }
   
   const handleKeyDown = (event) => {
-    if (keyMap[event.key]) {
+    const direction = keyMap[event.code]
+    
+    if (direction) {
       event.preventDefault()
-      handler(keyMap[event.key])
+      handler(direction)
     }
   }
   
