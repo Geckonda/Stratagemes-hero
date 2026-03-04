@@ -54,3 +54,23 @@
 .menu-button:hover {
   transform: scale(1.1);
 }
+
+/* buttons.css */
+.btn {
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #2a1a1a, #140a0a);
+  border: 1px solid #f44336;
+  color: #f44336;
+}
+
+.btn-danger:hover {
+  color: #fff;
+  box-shadow: 0 0 12px rgba(244, 67, 54, 0.6);
+}

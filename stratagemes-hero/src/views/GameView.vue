@@ -3,12 +3,53 @@
     
     <template #sidebar>
     <h3 class="sidebar-title">Стратагемы</h3>
+    <div class="filters-wrapper">
+        <button class="filters-toggle" @click="toggleFilters">
+            <span>Фильтры</span>
+            <span class="arrow" :class="{ open: filtersOpen }">▾</span>
+        </button>
+
+        <transition name="collapse">
+            <div v-show="filtersOpen" class="filters">
+            <input
+                type="text"
+                placeholder="Поиск..."
+                v-model="stratagemsStore.searchQuery"
+                class="search-input"
+            />
+
+            <div class="difficulty-filters">
+                <label v-for="level in 5" :key="level">
+                <input
+                    type="checkbox"
+                    :value="level"
+                    v-model="stratagemsStore.difficultyFilter"
+                />
+                {{ level +'★' }}
+                </label>
+            </div>
+
+            <button class="reset-button" @click="stratagemsStore.resetFilters()">
+                Сброс
+            </button>
+            </div>
+        </transition>
+        <transition name="fade-slide">
+            <button
+                v-if="hasSelected"
+                class="btn btn-danger btn-cancel"
+                @click="stratagemsStore.selectedStratagems = []"
+            >
+                Отмена выбранных
+            </button>
+        </transition>
+    </div>
       <div class="sidebar-top">
         <StratagemList 
         :stratagems="stratagemsStore.allStratagems"
         :unlocked="stratagemsStore.unlockedStratagems"
         />
-    </div>
+      </div>
       <ScoreBoard 
         :score="gameStore.score"
         :mistakes="gameStore.mistakes"
@@ -54,6 +95,7 @@ import StratagemList from '@/components/ui/StratagemList.vue'
 import ScoreBoard from '@/components/ui/ScoreBoard.vue'
 import { useSound } from '@/composables/soundManager'
 import { useGlobalInput } from '@/composables/useGlobalInput'
+import { watch, ref, computed } from 'vue'
 
 const gameStore = useGameStore()
 const stratagemsStore = useStratagemsStore()
@@ -74,6 +116,27 @@ const startGame = () => {
   gameStore.setCurrentStratagem(firstStratagem)
   gameStore.startGame()
 }
+
+const filtersOpen = ref(false)
+
+const toggleFilters = () => {
+  filtersOpen.value = !filtersOpen.value
+}
+
+watch(
+  () => [
+    stratagemsStore.searchQuery,
+    stratagemsStore.difficultyFilter.length
+  ],
+  ([query, diffLen]) => {
+    if (query || diffLen > 0) {
+      filtersOpen.value = true
+    }
+  }
+)
+const hasSelected = computed(() =>
+  stratagemsStore.selectedStratagems.length > 0
+)
 </script>
 
 <style scoped>
@@ -104,6 +167,205 @@ const startGame = () => {
   color: white;
 }
 
+.filters-wrapper {
+  padding: 0 15px;
+  margin-bottom: 20px;
+}
+.difficulty-filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.difficulty-filters label {
+  cursor: pointer;
+  font-size: 12px;
+}
+/* Кнопка */
+.filters-toggle {
+  width: 100%;
+  background: var(--secondary-background);
+  border: 1px solid #4a4a4a;
+  color: var(--main-accent);
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+.filters-toggle:hover {
+  border-color: var(--main-accent);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+/* Стрелка */
+.arrow {
+  transition: transform 0.25s ease;
+}
+
+.arrow.open {
+  transform: rotate(180deg);
+}
+
+/* Контейнер фильтров */
+.filters {
+  margin-top: 10px;
+  padding: 12px;
+  background: var(--primary-background);
+  border-radius: 8px;
+  border: 1px solid #4a4a4a;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Анимация */
+.collapse-enter-active,
+.collapse-leave-active {
+  transition: all 0.25s ease;
+}
+
+.collapse-enter-from,
+.collapse-leave-to {
+  opacity: 0;
+  transform: translateY(-5px);
+}
+.search-input {
+  background: #0f0f0f;
+  border: 1px solid #4a4a4a;
+  border-radius: 8px;
+  padding: 10px 12px;
+
+  color: white;
+  font-size: 14px;
+
+  outline: none;
+  transition: all 0.2s;
+}
+
+.search-input::placeholder {
+  color: #777;
+}
+
+.search-input:focus {
+  border-color: var(--main-accent);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+  background: #121212;
+}
+.difficulty-filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Контейнер */
+.difficulty-checkbox {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  cursor: pointer;
+  user-select: none;
+
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: #111;
+  border: 1px solid #333;
+
+  transition: all 0.2s;
+  font-size: 12px;
+}
+
+/* Скрываем нативный input */
+.difficulty-checkbox input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Квадрат */
+.checkmark {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  border: 1px solid #666;
+  background: #000;
+  transition: all 0.2s;
+}
+
+/* Звёзды */
+.stars {
+  color: #888;
+  letter-spacing: 1px;
+}
+
+/* Hover */
+.difficulty-checkbox:hover {
+  border-color: var(--main-accent);
+}
+
+/* Checked */
+.difficulty-checkbox input:checked ~ .checkmark {
+  background: var(--main-accent);
+  border-color: var(--main-accent);
+  box-shadow: 0 0 6px rgba(255, 215, 0, 0.6);
+}
+
+.difficulty-checkbox input:checked ~ .stars {
+  color: var(--main-accent);
+}
+.reset-button {
+  background: linear-gradient(135deg, #1a1a1a, #111);
+  border: 1px solid #4a4a4a;
+  border-radius: 8px;
+
+  color: #ccc;
+  font-weight: bold;
+  padding: 8px 12px;
+  cursor: pointer;
+
+  transition: all 0.2s;
+}
+
+.reset-button:hover {
+  color: #fff;
+  border-color: #f44336;
+  box-shadow: 0 0 10px rgba(244, 67, 54, 0.4);
+}
+
+.reset-button:active {
+  transform: scale(0.96);
+}
+.filters-toggle {
+  background: linear-gradient(135deg, #1c1c1c, #101010);
+}
+
+.filters-toggle:active {
+  transform: scale(0.98);
+}
+:deep(.fade-slide-enter-active),
+:deep(.fade-slide-leave-active) {
+  transition: all 0.25s ease;
+}
+
+:deep(.fade-slide-enter-from),
+:deep(.fade-slide-leave-to) {
+  opacity: 0;
+  transform: translateY(-5px);
+}
+/* В компоненте */
+.btn-cancel {
+  margin-top: 12px;
+  width: 100%;
+}
 .game-title {
   font-size: 48px;
   margin-bottom: 10px;

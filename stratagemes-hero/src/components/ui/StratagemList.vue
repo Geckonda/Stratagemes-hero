@@ -1,7 +1,12 @@
 <template>
   <div class="stratagem-list">
-    
-    <div v-for="stratagem in sortedStratagems" :key="stratagem.id" class="stratagem-card">
+    <div
+      v-for="stratagem in sortedStratagems"
+      :key="stratagem.id"
+      class="stratagem-card"
+      :class="{ selected: isSelected(stratagem) }"
+      @click="stratagemsStore.toggleStratagemSelection(stratagem)"
+    >
       <div class="stratagem-header">
         <StratagemIcon 
           :icon-file="stratagem.icon" 
@@ -34,16 +39,21 @@
 import { computed } from 'vue'
 import StratagemIcon from '../game/StratagemIcon.vue'
 import DirectionArrow from '../game/DirectionArrow.vue'
+import { useStratagemsStore } from '@/stores/stratagemsStore'
 
+const stratagemsStore = useStratagemsStore()
 const props = defineProps({
-  stratagems: Array,
   unlocked: Array
 })
 
+
+const isSelected = (stratagem) => {
+  return stratagemsStore.selectedStratagems.some(
+    s => s.id === stratagem.id
+  )
+}
 const sortedStratagems = computed(() => {
-  if (!props.stratagems) return []
-  
-  return [...props.stratagems].sort((a, b) => {
+  return [...stratagemsStore.filteredStratagems].sort((a, b) => {
     if (a.difficulty !== b.difficulty) {
       return a.difficulty - b.difficulty
     }
@@ -83,6 +93,7 @@ const isUnlocked = (stratagem) => {
   margin-bottom: 10px;
   border: 1px solid #4a4a4a;
   transition: all 0.2s;
+  cursor: pointer;
 }
 
 .stratagem-card:hover {
@@ -90,7 +101,11 @@ const isUnlocked = (stratagem) => {
   transform: translateX(5px);
   box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
 }
-
+.stratagem-card.selected {
+  border-color: var(--main-accent);
+  background: rgba(255, 215, 0, 0.15);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+}
 .stratagem-header {
   display: flex;
   align-items: center;
