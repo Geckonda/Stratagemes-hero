@@ -59,11 +59,7 @@ useGlobalInput({
 
 useGlobalInput({
   Escape: () => {
-    console.log("ESC");
-    
-    if(gameStore.gameStatus === 'playing') {
-        console.log("GO");
-        
+    if(gameStore.gameStatus === 'playing') {        
       returnToMenu()
     }
   }
